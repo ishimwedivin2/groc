@@ -25,7 +25,7 @@ public class UserController {
     @Autowired
     private MessageSource messageSource; // Inject MessageSource for localization
 
-    @GetMapping("/home")
+    @GetMapping("/")
     public String home() {
         return "index"; // Home page
     }
