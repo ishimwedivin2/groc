@@ -1,0 +1,225 @@
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <title>Upload User Data</title>-->
+<!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">-->
+<!--    <style>-->
+
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="container">-->
+<!--    <h1 class="text-center">Upload User Data</h1>-->
+
+<!--    &lt;!&ndash; User Upload Form &ndash;&gt;-->
+<!--    <h3>Upload User Data</h3>-->
+<!--    <form action="/admin/upload/users" method="post" enctype="multipart/form-data" class="mt-4">-->
+<!--        <div class="form-group">-->
+<!--            <label for="userFile">Select User CSV file:</label>-->
+<!--            <input type="file" id="userFile" name="file" accept=".csv" class="form-control" required>-->
+<!--        </div>-->
+<!--        <button type="submit" class="btn btn-secondary btn-block">Upload Users</button>-->
+<!--    </form>-->
+
+<!--    &lt;!&ndash; User Upload Message &ndash;&gt;-->
+<!--    <div th:if="${userMessage}" class="message alert alert-info" role="alert">-->
+<!--        <p th:text="${userMessage}"></p>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>-->
+<!--<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>-->
+<!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>-->
+<!--</body>-->
+<!--</html>-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grocery Store - Customer Dashboard</title>
+    <style>
+        /* Basic Reset */
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          background-color: #1abc9c;
+          padding: 10px 20px;
+          color: white;
+        }
+
+        .navbar .menu-icon {
+          cursor: pointer;
+          display: none;
+        }
+
+        .navbar .menu-icon div {
+          width: 30px;
+          height: 3px;
+          background-color: white;
+          margin: 5px 0;
+          transition: 0.4s;
+        }
+
+        /* Center logo/name */
+        .navbar .logo {
+          font-size: 24px;
+          font-weight: bold;
+          color: #fff;
+        }
+
+        /* Nav Links */
+        .nav-links {
+          list-style-type: none;
+          display: flex;
+          gap: 15px;
+        }
+
+        .nav-links li a {
+          text-decoration: none;
+          color: white;
+          font-size: 16px;
+          transition: color 0.3s ease;
+        }
+
+        .nav-links li a:hover {
+          color: #f1c40f;
+        }
+
+        /* Main Content Area with Flexbox Layout */
+        .content {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          padding: 30px;
+          background-color: #ffffff;
+          border-radius: 10px;
+          margin: 20px;
+        }
+
+        /* Upload Form Styles */
+        .upload-form {
+          width: 100%;
+          padding: 20px;
+          background-color: #f8f9fa;
+          border-radius: 10px;
+          margin-top: 30px;
+          box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer {
+          background-color: #1abc9c;
+          color: white;
+          padding: 20px;
+          text-align: center;
+          margin-top: 50px;
+        }
+
+        .footer h3 {
+          margin-bottom: 10px;
+        }
+
+        .footer ul {
+          list-style-type: none;
+          display: flex;
+          justify-content: center;
+          gap: 20px;
+        }
+
+        .footer ul li a {
+          color: white;
+          text-decoration: none;
+          font-size: 16px;
+        }
+
+        .footer ul li a:hover {
+          color: #1abc9c;
+        }
+    </style>
+</head>
+<body>
+<!-- Navigation Bar -->
+<nav class="navbar">
+    <div class="menu-icon" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+    <div class="logo">Grocery Store - Customer</div>
+
+    <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="orders.html">Orders</a></li>
+        <li><a href="login.html">Logout</a></li>
+    </ul>
+</nav>
+
+<!-- Main Content Area -->
+<section class="content">
+    <h2>Welcome to Your Customer Dashboard!</h2>
+    <p>Explore our products and enjoy shopping!</p>
+
+    <!-- User Upload Form -->
+    <div class="upload-form">
+        <h3>Upload User Data</h3>
+        <form
+                action="/admin/upload/users"
+                method="post"
+                enctype="multipart/form-data"
+                class="mt-4"
+        >
+            <div class="form-group">
+                <label for="userFile">Select User CSV file:</label>
+                <input
+                        type="file"
+                        id="userFile"
+                        name="file"
+                        accept=".csv"
+                        class="form-control"
+                        required
+                />
+            </div>
+            <button type="submit" class="btn btn-secondary btn-block">
+                Upload Users
+            </button>
+        </form>
+
+        <!-- User Upload Message -->
+        <div
+                th:if="${userMessage}"
+                class="message alert alert-info"
+                role="alert"
+        >
+            <p th:text="${userMessage}"></p>
+        </div>
+    </div>
+</section>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<!-- Footer -->
+<footer class="footer">
+    <h3>Grocery Store</h3>
+    <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Privacy</a></li>
+        <li><a href="#">Terms</a></li>
+        <li><a href="#">Help</a></li>
+    </ul>
+</footer>
+
+<script>
+    function toggleMenu() {
+      document.querySelector(".navbar").classList.toggle("active");
+    }
+</script>
+</body>
+</html>

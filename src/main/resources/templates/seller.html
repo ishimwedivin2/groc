@@ -1,0 +1,351 @@
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org" lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8" />-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0" />-->
+<!--    <title>Grocery Store - Seller Dashboard</title>-->
+<!--    <style>-->
+<!--        /* Reset some default styles */-->
+<!--        * {-->
+<!--          margin: 0;-->
+<!--          padding: 0;-->
+<!--          box-sizing: border-box;-->
+<!--        }-->
+
+<!--        body {-->
+<!--          font-family: "Arial", sans-serif;-->
+<!--          background-color: #f0f0f0;-->
+<!--          color: #2c3e50;-->
+<!--        }-->
+
+<!--        /* Navigation Bar */-->
+<!--        .navbar {-->
+<!--          display: flex;-->
+<!--          justify-content: space-between;-->
+<!--          align-items: center;-->
+<!--          padding: 20px 50px;-->
+<!--          background-color: #1abc9c;-->
+<!--          color: white;-->
+<!--        }-->
+
+<!--        .navbar .logo {-->
+<!--          font-size: 28px;-->
+<!--          font-weight: bold;-->
+<!--          text-align: center;-->
+<!--          justify-content: center;-->
+<!--        }-->
+
+<!--        .nav-links {-->
+<!--          list-style-type: none;-->
+<!--          display: flex;-->
+<!--          gap: 15px;-->
+<!--        }-->
+
+<!--        .nav-links li a {-->
+<!--          text-decoration: none;-->
+<!--          color: white;-->
+<!--          font-size: 16px;-->
+<!--          transition: color 0.3s ease;-->
+<!--        }-->
+
+<!--        .nav-links li a:hover {-->
+<!--          color: #f1c40f;-->
+<!--        }-->
+
+<!--        /* Main Content Section */-->
+<!--        .content {-->
+<!--          padding: 50px 20px;-->
+<!--          max-width: 1200px;-->
+<!--          margin: 0 auto;-->
+<!--          display: flex;-->
+<!--          flex-wrap: wrap;-->
+<!--          justify-content: center;-->
+<!--        }-->
+
+<!--        .content h2 {-->
+<!--          width: 100%;-->
+<!--          text-align: center;-->
+<!--          margin-bottom: 30px;-->
+<!--        }-->
+
+<!--        /* Product List Table */-->
+<!--        table {-->
+<!--          width: 100%;-->
+<!--          border-collapse: collapse;-->
+<!--          margin-top: 30px;-->
+<!--        }-->
+
+<!--        table th, table td {-->
+<!--          padding: 10px;-->
+<!--          text-align: center;-->
+<!--          border: 1px solid #ddd;-->
+<!--        }-->
+
+<!--        table th {-->
+<!--          background-color: #1abc9c;-->
+<!--          color: white;-->
+<!--        }-->
+
+<!--        table td {-->
+<!--          background-color: #ecf0f1;-->
+<!--        }-->
+
+<!--        table tr:nth-child(even) td {-->
+<!--          background-color: #f2f2f2;-->
+<!--        }-->
+
+<!--        a {-->
+<!--          text-decoration: none;-->
+<!--          color: #1abc9c;-->
+<!--        }-->
+
+<!--        a:hover {-->
+<!--          color: #16a085;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--&lt;!&ndash; Navigation Bar &ndash;&gt;-->
+<!--<nav class="navbar">-->
+<!--    <div class="logo">Grocery Store</div>-->
+<!--    <ul class="nav-links">-->
+<!--        <li><a href="#">Home DashBoard</a></li>-->
+<!--        <li><a href="#">Contact</a></li>-->
+<!--        <li><a th:href="@{/logout}">Logout</a></li>-->
+<!--    </ul>-->
+<!--</nav>-->
+
+<!--&lt;!&ndash; Main Content Area &ndash;&gt;-->
+<!--<section class="content">-->
+<!--    <h2>Welcome to Your Account, <span th:text="${user.firstName} + ' ' + ${user.lastName}"></span>!</h2>-->
+
+<!--    &lt;!&ndash; Product List Section &ndash;&gt;-->
+<!--    <h2>Product List</h2>-->
+<!--    <table>-->
+<!--        <thead>-->
+<!--        <tr>-->
+<!--            <th>Name</th>-->
+<!--            <th>Category</th>-->
+<!--            <th>Price</th>-->
+<!--            <th>Description</th>-->
+<!--            <th>Actions</th>-->
+<!--        </tr>-->
+<!--        </thead>-->
+<!--        <tbody>-->
+<!--        <tr th:each="product : ${products}">-->
+<!--            <td th:text="${product.name}"></td>-->
+<!--            <td th:text="${product.category}"></td>-->
+<!--            <td th:text="${product.price}"></td>-->
+<!--            <td th:text="${product.description}"></td>-->
+<!--            <td>-->
+<!--                <a th:href="@{/products/edit(id=${product.id})}">Edit</a> |-->
+<!--                <a th:href="@{/products/delete(id=${product.id})}" onclick="return confirm('Are you sure?')">Delete</a>-->
+<!--            </td>-->
+<!--        </tr>-->
+<!--        </tbody>-->
+<!--    </table>-->
+
+<!--    <a href="/products/new">Add New Product</a>-->
+<!--</section>-->
+
+<!--</body>-->
+<!--</html>-->
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grocery Store - Seller Dashboard</title>
+    <style>
+        /* Reset some default styles */
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+
+        body {
+          font-family: "Arial", sans-serif;
+          background-color: #f0f0f0;
+          color: #2c3e50;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 20px 50px;
+          background-color: #1abc9c;
+          color: white;
+        }
+
+        .navbar .logo {
+          font-size: 28px;
+          font-weight: bold;
+          text-align: center;
+          justify-content: center;
+        }
+
+        .nav-links {
+          list-style-type: none;
+          display: flex;
+          gap: 15px;
+        }
+
+        .nav-links li a {
+          text-decoration: none;
+          color: white;
+          font-size: 16px;
+          transition: color 0.3s ease;
+        }
+
+        .nav-links li a:hover {
+          color: #f1c40f;
+        }
+
+        /* Main Content Section */
+        .content {
+          padding: 50px 20px;
+          max-width: 1200px;
+          margin: 0 auto;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        .content h2 {
+          width: 100%;
+          text-align: center;
+          margin-bottom: 30px;
+        }
+
+        /* Product List Table */
+        table {
+          width: 100%;
+          border-collapse: collapse;
+          margin-top: 30px;
+        }
+
+        table th, table td {
+          padding: 10px;
+          text-align: center;
+          border: 1px solid #ddd;
+        }
+
+        table th {
+          background-color: #1abc9c;
+          color: white;
+        }
+
+        table td {
+          background-color: #ecf0f1;
+        }
+
+        table tr:nth-child(even) td {
+          background-color: #f2f2f2;
+        }
+
+        a {
+          text-decoration: none;
+          color: #1abc9c;
+        }
+
+        a:hover {
+          color: #16a085;
+        }
+
+        /* Footer */
+        .footer {
+          background-color: #1abc9c;
+          color: white;
+          padding: 20px 0;
+          text-align: center;
+          margin-top: 50px;
+        }
+
+        .footer h3 {
+          margin-bottom: 10px;
+        }
+
+        .footer ul {
+          list-style-type: none;
+          display: flex;
+          justify-content: center;
+          gap: 20px;
+        }
+
+        .footer ul li a {
+          color: white;
+          text-decoration: none;
+          font-size: 16px;
+        }
+
+        .footer ul li a:hover {
+          color: #f1c40f;
+        }
+
+        .footer .social-icons {
+          margin-top: 20px;
+        }
+
+        .footer .social-icons a {
+          margin: 0 10px;
+          font-size: 24px;
+          color: white;
+          transition: color 0.3s ease;
+        }
+
+        .footer .social-icons a:hover {
+          color: #1abc9c;
+        }
+
+        .footer p {
+          margin-top: 10px;
+          font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav class="navbar">
+    <div class="logo">Grocery Store</div>
+    <ul class="nav-links">
+        <li><a href="#">Home DashBoard</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a th:href="@{/logout}">Logout</a></li>
+    </ul>
+</nav>
+
+<!-- Main Content Area -->
+<section class="content">
+    <h2>Welcome,  <span th:text="${user.firstName} + ' ' + ${user.lastName}"></span>!</h2>
+
+    <!-- Product List Section -->
+    <h2>Seller Dashboard</h2>
+
+    <a href="/products">Go to Manage Products</a>
+</section>
+
+<!-- Footer Section -->
+<footer class="footer">
+    <h3>Stay Connected</h3>
+    <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+    </ul>
+    <div class="social-icons">
+        <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+    </div>
+    <p>&copy; 2024 Grocery Store. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

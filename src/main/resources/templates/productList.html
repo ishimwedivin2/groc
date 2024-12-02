@@ -1,0 +1,587 @@
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org" lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8" />-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0" />-->
+<!--    <title>Grocery Store - Fresh Products at Best Prices</title>-->
+<!--    <style>-->
+<!--        /* Reset some default styles */-->
+<!--        * {-->
+<!--          margin: 0;-->
+<!--          padding: 0;-->
+<!--          box-sizing: border-box;-->
+<!--        }-->
+
+<!--        body {-->
+<!--          font-family: "Arial", sans-serif;-->
+<!--          background-color: #f0f0f0;-->
+<!--          color: #2c3e50;-->
+<!--        }-->
+
+<!--        /* Navigation Bar */-->
+<!--        .navbar {-->
+<!--          display: flex;-->
+<!--          justify-content: space-between;-->
+<!--          align-items: center;-->
+<!--          padding: 20px 50px;-->
+<!--          background-color: #1abc9c;-->
+<!--          color: white;-->
+<!--        }-->
+
+<!--        .navbar .logo {-->
+<!--          font-size: 28px;-->
+<!--          font-weight: bold;-->
+<!--          text-align: center;-->
+<!--          justify-content: center;-->
+<!--        }-->
+
+<!--        .nav-links {-->
+<!--          list-style-type: none;-->
+<!--          display: flex;-->
+<!--          gap: 15px;-->
+<!--        }-->
+
+<!--        .nav-links li a {-->
+<!--          text-decoration: none;-->
+<!--          color: white;-->
+<!--          font-size: 16px;-->
+<!--          transition: color 0.3s ease;-->
+<!--        }-->
+
+<!--        .nav-links li a:hover {-->
+<!--          color: #f1c40f;-->
+<!--        }-->
+
+
+
+<!--        /* Main Content Section */-->
+<!--        .main-content {-->
+<!--          padding: 50px 20px;-->
+<!--          max-width: 1200px;-->
+<!--          margin: 0 auto;-->
+<!--          display: flex;-->
+<!--          flex-wrap: wrap;-->
+<!--          justify-content: center;-->
+<!--        }-->
+
+<!--        .main-content h2 {-->
+<!--          width: 100%;-->
+<!--          text-align: center;-->
+<!--          margin-bottom: 30px;-->
+<!--        }-->
+
+<!--        .product {-->
+<!--          width: 250px;-->
+<!--          background-color: #ecf0f1;-->
+<!--          padding: 20px;-->
+<!--          border-radius: 10px;-->
+<!--          text-align: center;-->
+<!--          margin: 20px;-->
+<!--          transition: transform 0.3s ease;-->
+<!--        }-->
+
+<!--        .product img {-->
+<!--          max-width: 100%;-->
+<!--          height: auto;-->
+<!--          border-radius: 10px;-->
+<!--          margin-bottom: 10px;-->
+<!--        }-->
+
+<!--        .product h3 {-->
+<!--          font-size: 18px;-->
+<!--          color: #2c3e50;-->
+<!--          margin-bottom: 10px;-->
+<!--        }-->
+
+<!--        .product p {-->
+<!--          font-size: 16px;-->
+<!--          color: #7f8c8d;-->
+<!--        }-->
+
+<!--        .product:hover {-->
+<!--          transform: scale(1.05);-->
+<!--        }-->
+
+<!--        /* Offer Section */-->
+<!--        .offer-section {-->
+<!--          background-color: #f1c40f;-->
+<!--          padding: 40px 20px;-->
+<!--          border-radius: 10px;-->
+<!--          text-align: center;-->
+<!--          margin: 50px 0;-->
+<!--        }-->
+
+<!--        .offer-section h2 {-->
+<!--          font-size: 28px;-->
+<!--          color: #fff;-->
+<!--          margin-bottom: 20px;-->
+<!--        }-->
+
+<!--        /* Footer Section */-->
+<!--        .footer {-->
+<!--          background-color: #1abc9c;-->
+<!--          color: white;-->
+<!--          padding: 20px 0;-->
+<!--          text-align: center;-->
+<!--          margin-top: 50px;-->
+<!--        }-->
+
+<!--        .footer h3 {-->
+<!--          margin-bottom: 10px;-->
+<!--        }-->
+
+<!--        .footer ul {-->
+<!--          list-style-type: none;-->
+<!--          display: flex;-->
+<!--          justify-content: center;-->
+<!--          gap: 20px;-->
+<!--        }-->
+
+<!--        .footer ul li a {-->
+<!--          color: white;-->
+<!--          text-decoration: none;-->
+<!--          font-size: 16px;-->
+<!--        }-->
+
+<!--        .footer ul li a:hover {-->
+<!--          color: #f1c40f;-->
+<!--        }-->
+
+<!--        .footer .social-icons {-->
+<!--          margin-top: 20px;-->
+<!--        }-->
+
+<!--        .footer .social-icons a {-->
+<!--          margin: 0 10px;-->
+<!--          font-size: 24px;-->
+<!--          color: white;-->
+<!--          transition: color 0.3s ease;-->
+<!--        }-->
+
+<!--        .footer .social-icons a:hover {-->
+<!--          color: #1abc9c;-->
+<!--        }-->
+
+<!--        /* Product List Table */-->
+<!--        table {-->
+<!--          width: 100%;-->
+<!--          border-collapse: collapse;-->
+<!--          margin-top: 30px;-->
+<!--        }-->
+
+<!--        table th, table td {-->
+<!--          padding: 10px;-->
+<!--          text-align: center;-->
+<!--          border: 1px solid #ddd;-->
+<!--        }-->
+
+<!--        table th {-->
+<!--          background-color: #1abc9c;-->
+<!--          color: white;-->
+<!--        }-->
+
+<!--        table td {-->
+<!--          background-color: #ecf0f1;-->
+<!--        }-->
+
+<!--        table tr:nth-child(even) td {-->
+<!--          background-color: #f2f2f2;-->
+<!--        }-->
+
+<!--        a {-->
+<!--          text-decoration: none;-->
+<!--          color: #1abc9c;-->
+<!--        }-->
+
+<!--        a:hover {-->
+<!--          color: #16a085;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--&lt;!&ndash; Navigation Bar &ndash;&gt;-->
+<!--<nav class="navbar">-->
+<!--    <div class="logo">Grocery Store</div>-->
+<!--    <ul class="nav-links">-->
+<!--        <li><a th:href="@{/admin}">Home DashBoard</a></li>-->
+<!--        <li><a href="#">Contact</a></li>-->
+<!--        <li><a th:href="@{/logout}">Logout</a></li>-->
+
+<!--    </ul>-->
+<!--</nav>-->
+
+
+
+
+<!--&lt;!&ndash; Product List Section &ndash;&gt;-->
+<!--<section class="main-content">-->
+<!--    <h2>Product List</h2>-->
+<!--    <table>-->
+<!--        <thead>-->
+<!--        <tr>-->
+<!--            <th>Name</th>-->
+<!--            <th>Category</th>-->
+<!--            <th>Price</th>-->
+<!--            <th>Description</th>-->
+<!--            <th>Actions</th>-->
+<!--        </tr>-->
+<!--        </thead>-->
+<!--        <tbody>-->
+<!--        <tr th:each="product : ${products}">-->
+<!--            <td th:text="${product.name}"></td>-->
+<!--            <td th:text="${product.category}"></td>-->
+<!--            <td th:text="${product.price}"></td>-->
+<!--            <td th:text="${product.description}"></td>-->
+<!--            <td>-->
+<!--                <a th:href="@{/products/edit(id=${product.id})}">Edit</a> |-->
+<!--                <a th:href="@{/products/delete(id=${product.id})}" onclick="return confirm('Are you sure?')">Delete</a>-->
+<!--            </td>-->
+<!--        </tr>-->
+<!--        </tbody>-->
+<!--    </table>-->
+
+<!--    <a href="/products/new">Add New Product</a>-->
+<!--</section>-->
+
+<!--&lt;!&ndash; Special Offer Section &ndash;&gt;-->
+<!--<section class="offer-section">-->
+<!--    <h2>Special Offer: 50% Off on All Fruits!</h2>-->
+<!--    <p>Shop now and enjoy fresh fruits at unbeatable prices.</p>-->
+<!--</section>-->
+
+<!--&lt;!&ndash; Footer &ndash;&gt;-->
+<!--<footer class="footer">-->
+<!--    <h3>Stay Connected</h3>-->
+<!--    <ul>-->
+<!--        <li><a href="#">About Us</a></li>-->
+<!--        <li><a href="#">FAQ</a></li>-->
+<!--        <li><a href="#">Privacy Policy</a></li>-->
+<!--        <li><a href="#">Terms of Service</a></li>-->
+<!--    </ul>-->
+<!--    <div class="social-icons">-->
+<!--        <a href="#"><i class="fab fa-facebook-f"></i></a>-->
+<!--        <a href="#"><i class="fab fa-twitter"></i></a>-->
+<!--        <a href="#"><i class="fab fa-instagram"></i></a>-->
+<!--    </div>-->
+<!--</footer>-->
+<!--</body>-->
+<!--</html>-->
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grocery Store - Fresh Products at Best Prices</title>
+    <style>
+        /* Reset some default styles */
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+
+        body {
+          font-family: "Arial", sans-serif;
+          background-color: #f0f0f0;
+          color: #2c3e50;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 20px 50px;
+          background-color: #1abc9c;
+          color: white;
+        }
+
+        .navbar .logo {
+          font-size: 28px;
+          font-weight: bold;
+          text-align: center;
+          justify-content: center;
+        }
+
+        .nav-links {
+          list-style-type: none;
+          display: flex;
+          gap: 15px;
+        }
+
+        .nav-links li a {
+          text-decoration: none;
+          color: white;
+          font-size: 16px;
+          transition: color 0.3s ease;
+        }
+
+        .nav-links li a:hover {
+          color: #f1c40f;
+        }
+
+        /* Main Content Section */
+        .main-content {
+          padding: 50px 20px;
+          max-width: 1200px;
+          margin: 0 auto;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        .main-content h2 {
+          width: 100%;
+          text-align: center;
+          margin-bottom: 30px;
+        }
+
+        .product {
+          width: 250px;
+          background-color: #ecf0f1;
+          padding: 20px;
+          border-radius: 10px;
+          text-align: center;
+          margin: 20px;
+          transition: transform 0.3s ease;
+        }
+
+        .product img {
+          max-width: 100%;
+          height: auto;
+          border-radius: 10px;
+          margin-bottom: 10px;
+        }
+
+        .product h3 {
+          font-size: 18px;
+          color: #2c3e50;
+          margin-bottom: 10px;
+        }
+
+        .product p {
+          font-size: 16px;
+          color: #7f8c8d;
+        }
+
+        .product:hover {
+          transform: scale(1.05);
+        }
+
+        /* Offer Section */
+        .offer-section {
+          background-color: #f1c40f;
+          padding: 40px 20px;
+          border-radius: 10px;
+          text-align: center;
+          margin: 50px 0;
+        }
+
+        .offer-section h2 {
+          font-size: 28px;
+          color: #fff;
+          margin-bottom: 20px;
+        }
+
+        /* Footer Section */
+        .footer {
+          background-color: #1abc9c;
+          color: white;
+          padding: 20px 0;
+          text-align: center;
+          margin-top: 50px;
+        }
+
+        .footer h3 {
+          margin-bottom: 10px;
+        }
+
+        .footer ul {
+          list-style-type: none;
+          display: flex;
+          justify-content: center;
+          gap: 20px;
+        }
+
+        .footer ul li a {
+          color: white;
+          text-decoration: none;
+          font-size: 16px;
+        }
+
+        .footer ul li a:hover {
+          color: #f1c40f;
+        }
+
+        .footer .social-icons {
+          margin-top: 20px;
+        }
+
+        .footer .social-icons a {
+          margin: 0 10px;
+          font-size: 24px;
+          color: white;
+          transition: color 0.3s ease;
+        }
+
+        .footer .social-icons a:hover {
+          color: #1abc9c;
+        }
+
+        /* Product List Table */
+        table {
+          width: 100%;
+          border-collapse: collapse;
+          margin-top: 30px;
+        }
+
+        table th, table td {
+          padding: 10px;
+          text-align: center;
+          border: 1px solid #ddd;
+        }
+
+        table th {
+          background-color: #1abc9c;
+          color: white;
+        }
+
+        table td {
+          background-color: #ecf0f1;
+        }
+
+        table tr:nth-child(even) td {
+          background-color: #f2f2f2;
+        }
+
+        a {
+          text-decoration: none;
+          color: #1abc9c;
+        }
+
+        a:hover {
+          color: #16a085;
+        }
+
+        /* Chart Section */
+        .chart-container {
+          max-width: 600px;
+          margin: 50px auto;
+          text-align: center;
+        }
+
+        .chart-container h2 {
+          margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+<!-- Navigation Bar -->
+<nav class="navbar">
+    <div class="logo">Grocery Store</div>
+    <ul class="nav-links">
+        <li><a th:href="@{/admin}">Home DashBoard</a></li>
+        <li><a th:href="@{/seller}">Seller</a></li>
+        <li><a th:href="@{/logout}">Logout</a></li>
+    </ul>
+</nav>
+
+<!-- Product List Section -->
+<section class="main-content">
+    <h2>Product List</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="product : ${products}">
+            <td th:text="${product.name}"></td>
+            <td th:text="${product.category}"></td>
+            <td th:text="${product.price}"></td>
+            <td th:text="${product.description}"></td>
+            <td>
+                <a th:href="@{/products/edit(id=${product.id})}">Edit</a> |
+                <a th:href="@{/products/delete(id=${product.id})}" onclick="return confirm('Are you sure?')">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <a href="/products/new">Add New Product</a>
+</section>
+
+<!-- Chart Section -->
+<div class="chart-container">
+    <h2>Product Categories Overview</h2>
+    <canvas id="categoryChart"></canvas>
+</div>
+
+<!-- Special Offer Section -->
+<section class="offer-section">
+    <h2>Special Offer: 50% Off on All Fruits!</h2>
+    <p>Shop now and enjoy fresh fruits at unbeatable prices.</p>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <h3>Stay Connected</h3>
+    <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+    </ul>
+    <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+    </div>
+</footer>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Mock data: Replace with actual server data using Thymeleaf
+    const categoryCounts = {
+        Fruits: 10,
+        Vegetables: 15,
+        Drinks: 8,
+    };
+
+    // Data for Chart.js
+    const data = {
+        labels: Object.keys(categoryCounts),
+        datasets: [{
+            label: 'Categories',
+            data: Object.values(categoryCounts),
+            backgroundColor: ['#1abc9c', '#f1c40f', '#3498db'],
+            hoverOffset: 4,
+        }],
+    };
+
+    // Config for Chart.js
+    const config = {
+        type: 'doughnut',
+        data: data,
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+            },
+        },
+    };
+
+    // Render the chart
+    const ctx = document.getElementById('categoryChart').getContext('2d');
+    new Chart(ctx, config);
+</script>
+</body>
+</html>
